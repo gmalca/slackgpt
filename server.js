@@ -17,13 +17,14 @@ app.event("message", async ({ event, say }) => {
         if (event.channel_type === 'im') {
             let msg = event.text;
             console.log('Received msg', msg);
-            const response = await openai.createCompletion({
-                model: "text-davinci-003",
-                prompt: msg,
-                temperature: 0.5,
-                max_tokens: 1024,
+            const response = await openai.createChatCompletion({
+                model: "gpt-3.5-turbo",
+                messages: [
+                    {role: "user", content: msg}
+                ]
               });
-            say(response.data.choices[0].text);
+            // console.log('Response', response.data, response.data.choices, response.data.choices[0].message);
+            say(response.data.choices[0].message.content);
         }
     }
     catch (error) {
