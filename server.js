@@ -21,7 +21,8 @@ app.event("message", async ({ event, say }) => {
                 model: "gpt-3.5-turbo",
                 messages: [
                     {role: "user", content: msg}
-                ]
+                ],
+                temperature: 0.5                
               });
             // console.log('Response', response.data, response.data.choices, response.data.choices[0].message);
             say(response.data.choices[0].message.content);
