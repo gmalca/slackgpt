@@ -10,6 +10,7 @@
 7. Go to "OAuth & Permissions" section and install your app to your workspace
 8. Copy the **Slack Bot Token**
 9. Go to your App's **Basic Information** screen and copy the **Signing Secret***
+10. Under **App Home**, make sure you select "Allow users to send Slash commands and messages from the messages tab"
 
 ## OpenAI API
 1. Go to the OpenAI API website
