@@ -16,6 +16,7 @@ app.event("message", async ({ event, say }) => {
     try {
         if (event.channel_type === 'im') {
             let msg = event.text;
+            say("Thinking...");
             console.log('Received msg', msg);
             const response = await openai.createChatCompletion({
                 model: "gpt-3.5-turbo",
@@ -29,6 +30,7 @@ app.event("message", async ({ event, say }) => {
         }
     }
     catch (error) {
+        say("Sorry, something went wrong.");
         console.error(error);
     }
 });
