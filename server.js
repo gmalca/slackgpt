@@ -38,7 +38,11 @@ app.event("message", async ({ event, say }) => {
 app.event("app_mention", async ({ event, context, client, say }) => {
     try {
         let msg = event.text.replace(/(\<@.*\>)/g,'').trim();
-        say("Thinking...");
+        client.chat.postMessage({
+            channel: event.channel,
+            thread_ts: event.ts,
+            text: "Thinking..."
+        });
         console.log('Received msg', msg);
         const response = await getOpenAIResponse(msg);
         saveChatHistory(event.user, msg, response);
