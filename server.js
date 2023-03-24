@@ -42,7 +42,11 @@ app.event("app_mention", async ({ event, context, client, say }) => {
         console.log('Received msg', msg);
         const response = await getOpenAIResponse(msg);
         saveChatHistory(event.user, msg, response);
-        say(response);
+        client.chat.postMessage({
+            channel: event.channel,
+            thread_ts: event.ts,
+            text: response
+        });
     }
     catch (error) {
         say("Sorry, something went wrong.");
