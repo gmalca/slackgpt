@@ -19,6 +19,11 @@ app.event("message", async ({ event, say }) => {
     try {
         if (event.channel_type === 'im') {
             let msg = event.text;
+            if (msg.toLowerCase() == 'clear') {
+                delete CHAT_HISTORY[event.user];
+                say("Chat history cleared.");
+                return;
+            }
             say("Thinking...");
             console.log('Received msg', msg);
             const response = await getOpenAIResponse(msg, event.user);
