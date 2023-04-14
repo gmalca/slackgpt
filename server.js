@@ -91,7 +91,7 @@ async function getOpenAIResponse(msg, user) {
     }
     messages.push({role: "user", content: msg})
     const response = await openai.createChatCompletion({
-        model: "gpt-3.5-turbo",
+        model: "gpt-4",
         messages: messages,
         temperature: 0.5                
     });
